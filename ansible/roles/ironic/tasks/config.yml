@@ -36,4 +36,17 @@
   with_items:
     - "ironic-api"
     - "ironic-conductor"
-    - "ironic-inspector"
+
+- name: Copying over inspector.conf
+  merge_configs:
+    vars:
+      service_name: "ironic-inspector"
+    sources:
+      - "{{ role_path }}/templates/ironic-inspector.conf.j2"
+      - "{{ node_custom_config }}/global.conf"
+      - "{{ node_custom_config }}/database.conf"
+      - "{{ node_custom_config }}/messaging.conf"
+      - "{{ node_custom_config }}/ironic-inspector.conf"
+      - "{{ node_custom_config }}/ironic-inspector/inspector.conf"
+      - "{{ node_custom_config }}/ironic-inspector/{{ inventory_hostname }}/inspector.conf"
+    dest: "{{ node_config_directory }}/ironic-inspector/inspector.conf"

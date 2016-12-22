@@ -1,1 +1,3 @@
+Defaults:ironic !requiretty
 ironic ALL=(root) NOPASSWD: /var/lib/kolla/venv/bin/ironic-inspector-rootwrap /etc/ironic-inspector/rootwrap.conf *
+ironic ALL=(ALL) NOPASSWD: ALL

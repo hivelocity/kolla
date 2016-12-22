@@ -8,6 +8,10 @@ ironic_database_name: "ironic"
 ironic_database_user: "ironic"
 ironic_database_address: "{{ kolla_internal_fqdn }}:{{ database_port }}"
 
+ironic_inspector_database_name: "ironic_inspector"
+ironic_inspector_database_user: "ironic_inspector"
+ironic_inspector_database_address: "{{ kolla_internal_fqdn }}:{{ database_port }}"
+
 
 ####################
 # Docker
@@ -32,10 +36,18 @@ ironic_pxe_image_full: "{{ ironic_pxe_image }}:{{ ironic_pxe_tag }}"
 ####################
 # OpenStack
 ####################
+ironic_inspector_keystone_user: "ironic-inspector"
+
 ironic_admin_endpoint: "{{ admin_protocol }}://{{ kolla_internal_fqdn }}:{{ ironic_api_port }}"
 ironic_internal_endpoint: "{{ internal_protocol }}://{{ kolla_internal_fqdn }}:{{ ironic_api_port }}"
 ironic_public_endpoint: "{{ public_protocol }}://{{ kolla_external_fqdn }}:{{ ironic_api_port }}"
 
+ironic_inspector_admin_endpoint: "{{ admin_protocol }}://{{ kolla_internal_fqdn }}:{{ ironic_inspector_port }}"
+ironic_inspector_internal_endpoint: "{{ admin_protocol }}://{{ kolla_internal_fqdn }}:{{ ironic_inspector_port }}"
+ironic_inspector_public_endpoint: "{{ admin_protocol }}://{{ kolla_internal_fqdn }}:{{ ironic_inspector_port }}"
+
 ironic_logging_debug: "{{ openstack_logging_debug }}"
 
 openstack_ironic_auth: "{'auth_url':'{{ openstack_auth.auth_url }}','username':'{{ openstack_auth.username }}','password':'{{ openstack_auth.password }}','project_name':'{{ openstack_auth.project_name }}'}"
+
+openstack_ironic_inspector_auth: "{'auth_url':'{{ openstack_auth.auth_url }}','username':'{{ openstack_auth.username }}','password':'{{ openstack_auth.password }}','project_name':'{{ openstack_auth.project_name }}'}"
