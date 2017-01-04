@@ -45,3 +45,7 @@ glance_host = {{ kolla_internal_fqdn }}
 
 [neutron]
 url = {{ internal_protocol }}://{{ kolla_internal_fqdn }}:{{ neutron_server_port }}
+
+[inspector]
+service_url = {{ kolla_internal_fqdn }}:{{ ironic_inspector_port }}
+enabled = True
